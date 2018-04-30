@@ -9,10 +9,10 @@ Vagrant.configure(2) do |config|
     ansible.playbook = "playbook.yml"
     ansible.become = true
     ansible.groups = {
-     "mgmt" => ["mgmt0"],
-     "meta" => ["meta0"],
-     "storage" => ["storage0"],
-     "clients" => ["client0"],
+     "mgmt" => ["mgmt01"],
+     "meta" => ["meta01"],
+     "storage" => ["storage01"],
+     "clients" => ["client01"],
      "all_groups:children" => ["mgmt", "meta", "storage", "clients"]
     }
   end
@@ -22,23 +22,23 @@ Vagrant.configure(2) do |config|
     vb.memory = "512"
   end
 
-  config.vm.define "mgmt0" do |config|
-    config.vm.hostname = "mgmt0"
+  config.vm.define "mgmt01" do |config|
+    config.vm.hostname = "mgmt01"
     config.vm.network "private_network", ip: "192.168.44.10"
   end
 
-  config.vm.define "meta0" do |config|
-    config.vm.hostname = "meta0"
+  config.vm.define "meta01" do |config|
+    config.vm.hostname = "meta01"
     config.vm.network "private_network", ip: "192.168.44.20"
   end
 
-  config.vm.define "storage0" do |config|
-    config.vm.hostname = "storage0"
+  config.vm.define "storage01" do |config|
+    config.vm.hostname = "storage01"
     config.vm.network "private_network", ip: "192.168.44.30"
   end
 
-  config.vm.define "client0" do |config|
-    config.vm.hostname = "client0"
+  config.vm.define "client01" do |config|
+    config.vm.hostname = "client01"
     config.vm.network "private_network", ip: "192.168.44.40"
   end
 
