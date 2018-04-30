@@ -1,5 +1,4 @@
 # Beegfs Sandbox
-<<<<<<< HEAD
 Beegfs Sandbox Testing .Cross-platform via vagrant Linux, Windows, Mac.
 (work under progress)
 
