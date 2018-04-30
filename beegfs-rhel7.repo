@@ -1,0 +1,9 @@
+[fhgfs]
+
+name=beegfs_6 (RHEL7)
+
+# beegfs
+baseurl=http://www.beegfs.io/release/beegfs_6/dists/rhel7
+gpgkey=http://www.beegfs.io/release/beegfs_6/gpg/RPM-GPG-KEY-beegfs
+gpgcheck=0
+enabled=1
