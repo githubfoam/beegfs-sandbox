@@ -55,12 +55,12 @@ $ mpirun -hostfile /tmp/nodefile --map-by node -np ${NUM_PROCS} /usr/bin/IOR -w 
 -o /mnt/beegfs/test.ior
 
 
-mdtest  
+MDTEST  
 
 The value for the number of processes ${NUM_PROCS} depends on the number on clients to test and the number of processes per client to test. The number of directories can be calculated as ${NUM_DIRS} = (parameter -b ^ parameter -z). The total amount of files should always be higher than 1 000 000, so ${FILES_PER_DIR} is calculated as ${FILES_PER_DIR} = (1000000 / ${NUM_DIRS} / ${NUM_PROCS}).
 
 File Create/Stat/Remove Benchmark   
-$ mpirun -hostfile /tmp/nodefile --map-by node -np ${NUM_PROCS} mdtest -C -T -r -F -d /mnt/beegfs/mdtest -i 3 -I ${FILES_PER_DIR} -z 2 -b 8 -L -u
+$ mpirun -hostfile /tmp/nodefile --map-by node -np ${NUM_PROCS} mdtest -C -T -r -F -d /mnt/beegfs/mdtest -i 3 -I ${FILES_PER_DIR} -z 2 -b 8 -L -u   
 https://www.beegfs.io/wiki/Benchmark#externaltools
 
 BeeGFS®Benchmarks on IBM OpenPOWERServers
