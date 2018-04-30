@@ -1,0 +1,14 @@
+---
+
+- name: "BeeGFS metadata server packages"
+  yum: name=beegfs-meta state=present
+
+- name: "BeeGFS metadata server configuration"
+  command: "augtool -t 'Properties incl /etc/beegfs/beegfs-meta.conf' set /files/etc/beegfs/beegfs-meta.conf/storeMetaDirectory /data"
+
+- name: "BeeGFS metadata server  mgmt ip configuration"
+  command: "augtool -t 'Properties incl /etc/beegfs/beegfs-meta.conf' set /files/etc/beegfs/beegfs-meta.conf/sysMgmtdHost 192.168.44.10"
+
+- name: "BeeGFS metadata server service"
+  service: name=beegfs-meta state=started enabled=yes
+

@@ -1,0 +1,11 @@
+---
+
+- name: "BeeGFS mgmt server packages"
+  yum: name=beegfs-mgmtd state=present
+
+- name: "BeeGFS mgmt server configuration"
+  command: "augtool -t 'Properties incl /etc/beegfs/beegfs-mgmtd.conf' set /files/etc/beegfs/beegfs-mgmtd.conf/storeMgmtdDirectory /data"
+
+- name: "BeeGFS mgmt server service"
+  service: name=beegfs-mgmtd state=started enabled=yes
+

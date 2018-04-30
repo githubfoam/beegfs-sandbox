@@ -1,0 +1,13 @@
+---
+
+- name: "BeeGFS storage node packages"
+  yum: name=beegfs-storage state=present
+
+- name: "BeeGFS storage node configuration"
+  command: "augtool -t 'Properties incl /etc/beegfs/beegfs-storage.conf' set /files/etc/beegfs/beegfs-storage.conf/storeStorageDirectory /data"
+
+- name: "BeeGFS storage node mgmt ip configuration"
+  command: "augtool -t 'Properties incl /etc/beegfs/beegfs-storage.conf' set /files/etc/beegfs/beegfs-storage.conf/sysMgmtdHost 192.168.44.10"
+
+- name: "BeeGFS storage node service"
+  service: name=beegfs-storage state=started enabled=yes

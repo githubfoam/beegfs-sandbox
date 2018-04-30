@@ -1,0 +1,21 @@
+---
+
+- hosts: mgmt
+  roles:
+  - beegfs_common
+  - beegfs_mgmt
+
+- hosts: meta
+  roles:
+  - beegfs_common
+  - beegfs_meta
+
+- hosts: storage
+  roles:
+  - beegfs_common
+  - beegfs_storage
+
+- hosts: clients
+  roles:
+  - beegfs_common
+  - beegfs_client
