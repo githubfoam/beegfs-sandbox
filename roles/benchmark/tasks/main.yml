@@ -1,0 +1,23 @@
+---
+# - name: Unarchive iozone3_478.tar
+#   unarchive:
+#    src: http://www.iozone.org/src/current/iozone3_478.tar
+#    dest: /home/vagrant
+#   remote_src: yes
+- name: Download iozone3_478.tar
+  get_url:
+    url: http://www.iozone.org/src/current/iozone3_478.tar
+    dest: /home/vagrant/
+    mode: 0755
+- name: Extract iozone3_478.tar into /home/vagrant
+  unarchive:
+    src: /home/vagrant/iozone3_478.tar
+    dest: /home/vagrant
+- name: install the latest version of git
+  yum:
+   name: git
+   state: latest
+- name: This repo now contains both IOR and mdtest
+  shell: git clone https://github.com/hpc/ior.git
+  args:
+    chdir: /home/vagrant/

@@ -19,3 +19,4 @@
   roles:
   - beegfs_common
   - beegfs_client
+  - benchmark
