@@ -1,5 +1,5 @@
 # Beegfs Sandbox
-Beegfs Sandbox Testing .Cross-platform.Linux, Windows, Mac via vagrant.  
+Beegfs Sandbox Testing .Cross-platform via vagrant Linux, Windows, Mac. 
 (work under progress)
 
 BeeGFS (formerly FhGFS) is the leading parallel cluster file system.
