@@ -10,10 +10,10 @@ Centos 7.4
 https://www.centos.org/download/
 
 Download Vagrant.  
-vagrant version Installed Version: 2.0.4
+vagrant version Installed Version: 2.0.4   
 https://www.vagrantup.com/downloads.html
 
-Ansible Local Provisioner
+Ansible Local Provisioner   
 https://www.vagrantup.com/docs/provisioning/ansible_local.html
 
 Ansible
