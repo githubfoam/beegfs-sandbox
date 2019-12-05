@@ -2,7 +2,7 @@
 
 ```
 Beegfs Sandbox Testing .Cross-platform via vagrant Linux, Windows, Mac.
-(work under progress)
+
 
 BeeGFS (formerly FhGFS) is the leading parallel cluster file system.
 Latest Stable Version: 7.1.2    
