@@ -1,0 +1,44 @@
+---
+- vagrant_box_host: "vg-mgmt01"
+  vagrant_box: "bento/centos-7.7"
+  vbox_name: "vbox-mgmt01"
+  vbox_ram: 512
+  vbox_cpu: 2
+  network_type: "private_network"
+  vagrant_box_ip: 192.168.44.10
+  server_bootstrap: "provisioning/playbook.yml"
+  ansible_version: "2.9.1"
+  ansible_compatibility_mode: "2.0"
+
+- vagrant_box_host: "vg-meta01"
+  vagrant_box: "bento/centos-7.7"
+  vbox_name: "vbox-meta01"
+  vbox_ram: 512
+  vbox_cpu: 2
+  network_type: "private_network"
+  vagrant_box_ip: 192.168.44.20
+  server_bootstrap: "provisioning/playbook.yml"
+  ansible_version: "2.9.1"
+  ansible_compatibility_mode: "2.0"
+
+- vagrant_box_host: "vg-storage01"
+  vagrant_box: "bento/centos-7.7"
+  vbox_name: "vbox-storage01"
+  vbox_ram: 512
+  vbox_cpu: 2
+  network_type: "private_network"
+  vagrant_box_ip: 192.168.44.30
+  server_bootstrap: "provisioning/playbook.yml"
+  ansible_version: "2.9.1"
+  ansible_compatibility_mode: "2.0"
+
+- vagrant_box_host: "vg-client01"
+  vagrant_box: "bento/centos-7.7"
+  vbox_name: "vbox-client01"
+  vbox_ram: 512
+  vbox_cpu: 2
+  network_type: "private_network"
+  vagrant_box_ip: 192.168.44.40
+  server_bootstrap: "provisioning/playbook.yml"
+  ansible_version: "2.9.1"
+  ansible_compatibility_mode: "2.0"

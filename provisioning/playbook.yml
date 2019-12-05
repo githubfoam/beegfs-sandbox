@@ -1,0 +1,47 @@
+---
+- name: "Boot all hosts"
+  gather_facts: true
+  hosts:  all
+  become: yes
+  pre_tasks:
+  - name: "Setting hostname"
+    shell: "hostnamectl set-hostname {{ inventory_hostname }}"
+  roles:
+    - beegfs_common
+- name: "Boot management hosts"
+  gather_facts: true
+  hosts:  vg-mgmt01
+  become: yes
+  pre_tasks:
+  - name: "Setting hostname"
+    shell: "hostnamectl set-hostname {{ inventory_hostname }}"
+  roles:
+    - beegfs_mgmt
+- name: "Boot meta hosts"
+  gather_facts: true
+  hosts:  vg-meta01
+  become: yes
+  pre_tasks:
+  - name: "Setting hostname"
+    shell: "hostnamectl set-hostname {{ inventory_hostname }}"
+  roles:
+    - beegfs_meta
+- name: "Boot storage hosts"
+  gather_facts: true
+  hosts:  vg-storage01
+  become: yes
+  pre_tasks:
+  - name: "Setting hostname"
+    shell: "hostnamectl set-hostname {{ inventory_hostname }}"
+  roles:
+    - beegfs_storage
+- name: "Boot clients hosts"
+  gather_facts: true
+  hosts:  vg-client01
+  become: yes
+  pre_tasks:
+  - name: "Setting hostname"
+    shell: "hostnamectl set-hostname {{ inventory_hostname }}"
+  roles:
+    - beegfs_client
+    - benchmark

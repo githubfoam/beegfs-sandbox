@@ -15,3 +15,8 @@
   with_items:
   - augeas
   - beegfs-utils
+# - name: "Packages"
+#   yum: name: ['augeas', 'beegfs-utils']` state=present
+    # with_items:
+  # - augeas
+  # - beegfs-utils
