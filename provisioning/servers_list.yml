@@ -23,7 +23,7 @@
   ansible_compatibility_mode: "2.0"
 
 - vagrant_box_host: "vg-storage01"
-  vagrant_box: "bento/centos-7.7"
+  vagrant_box: "centos/7"
   vbox_name: "vbox-storage01"
   vbox_ram: 512
   vbox_cpu: 2
@@ -67,7 +67,7 @@
 #   ansible_compatibility_mode: "2.0"
 
 - vagrant_box_host: "vg-admon01"
-  vagrant_box: "centos/7"  
+  vagrant_box: "centos/7"
   vbox_name: "vbox-admon01"
   vbox_ram: 512
   vbox_cpu: 2
