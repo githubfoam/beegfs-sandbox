@@ -1,7 +1,7 @@
 # Beegfs Sandbox
 
-Travis (.com) dev branch:
-[![Build Status](https://travis-ci.com/githubfoam/beegfs-sandbox.svg?branch=centos7)](https://travis-ci.com/githubfoam/beegfs-sandbox)  
+Travis (.com) branch:
+[![Build Status](https://travis-ci.com/githubfoam/beegfs-sandbox.svg?branch=master)](https://travis-ci.com/githubfoam/beegfs-sandbox)  
 
 ```
 >vagrant up vg-mgmt01
