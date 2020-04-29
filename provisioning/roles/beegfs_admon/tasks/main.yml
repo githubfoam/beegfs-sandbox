@@ -1,0 +1,41 @@
+---
+- name: "BeeGFS Admon Server optional for graphical interface"
+  yum: name=beegfs-admon state=present
+
+# - name: "BeeGFS mountpoint"
+#   file: path=/mnt/beegfs state=directory
+
+# - name: "BeeGFS client packages"
+#   yum: name="{{ item }}" state=present
+#   with_items:
+#   - "kernel-devel-{{ ansible_kernel }}"
+#   - gcc
+#   - beegfs-client
+#   - beegfs-helperd
+
+# - name: "BeeGFS client packages"
+#   yum:
+#     # name: ['kernel-devel-{{ ansible_kernel }}','gcc', 'beegfs-helperd', 'beegfs-client']
+#     name: ['beegfs-utils', 'beegfs-helperd', 'beegfs-client']
+#     state: present
+#
+# - name: "The client needs to know where the management service is running"
+#   command: "/opt/beegfs/sbin/beegfs-setup-client -m vg-mgmt01"
+#
+# # - name: "BeeGFS client mgmt ip configuration"
+# #   command: "augtool -t 'Properties incl /etc/beegfs/beegfs-client.conf' set /files/etc/beegfs/beegfs-client.conf/sysMgmtdHost 192.168.44.10"
+#
+# - name: "BeeGFS helperd service"
+#   service: name=beegfs-helperd state=started enabled=yes
+#
+
+- name: "The optional admon service needs to know how to reach the management server"
+  template:
+      src: beegfs-admon.conf.j2
+      dest: /etc/beegfs/beegfs-admon.conf
+      owner: root
+      group: root
+      mode: 0644
+
+- name: "BeeGFS admon service"
+  service: name=beegfs-admon state=started enabled=yes

@@ -1,33 +1,11 @@
 # Beegfs Sandbox
 
+Travis (.com) dev branch:
+[![Build Status](https://travis-ci.com/githubfoam/beegfs-sandbox.svg?branch=centos7)](https://travis-ci.com/githubfoam/beegfs-sandbox)  
+
 ```
-Beegfs Sandbox Testing .Cross-platform via vagrant Linux, Windows, Mac.
+>vagrant up vg-mgmt01
 
-
-BeeGFS (formerly FhGFS) is the leading parallel cluster file system.
-Latest Stable Version: 7.1.2    
-https://www.beegfs.io
-
-Centos 7.7  
-https://www.centos.org/download/
-
-Download Vagrant.  
->vagrant version
-Installed Version: 2.2.6
-Latest Version: 2.2.6  
-https://www.vagrantup.com/downloads.html
-
-Ansible Local Provisioner   
-https://www.vagrantup.com/docs/provisioning/ansible_local.html
-
-Ansible
-ansible --version ansible 2.9.1  
-https://www.ansible.com/
-
-Download Oracle VM VirtualBox  
->VBoxManage -version
-6.0.14r133895       
-https://www.virtualbox.org/wiki/Downloads
 ```
 
 ```
@@ -156,4 +134,33 @@ BeeGFS®Benchmarks on IBM OpenPOWERServers
 
 HowTo Configure and Test BeeGFS with RDMA
 <https://community.mellanox.com/s/article/howto-configure-and-test-beegfs-with-rdma>
+```
+```
+Beegfs Sandbox Testing .Cross-platform via vagrant Linux, Windows, Mac.
+
+
+BeeGFS (formerly FhGFS) is the leading parallel cluster file system.
+Latest Stable Version: 7.1.2    
+https://www.beegfs.io
+
+Centos 7.7  
+https://www.centos.org/download/
+
+Download Vagrant.  
+>vagrant version
+Installed Version: 2.2.6
+Latest Version: 2.2.6  
+https://www.vagrantup.com/downloads.html
+
+Ansible Local Provisioner   
+https://www.vagrantup.com/docs/provisioning/ansible_local.html
+
+Ansible
+ansible --version ansible 2.9.1  
+https://www.ansible.com/
+
+Download Oracle VM VirtualBox  
+>VBoxManage -version
+6.0.14r133895       
+https://www.virtualbox.org/wiki/Downloads
 ```

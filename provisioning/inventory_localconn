@@ -1,0 +1,21 @@
+# Not inventory, remote passwordless ssh connection
+
+[vgmgmt]
+vg-mgmt01 ansible_connection=local
+
+[vgmeta]
+vg-meta01 ansible_connection=local
+
+[vgstorage]
+vg-storage01 ansible_connection=local
+#vg-storage02 ansible_connection=local
+
+[vgclients]
+vg-client01 ansible_connection=local
+#vg-client02 ansible_connection=local
+
+[vgmons]
+vg-admon01 ansible_connection=local
+
+#[all:vars]
+#ansible_python_interpreter=/usr/bin/python3

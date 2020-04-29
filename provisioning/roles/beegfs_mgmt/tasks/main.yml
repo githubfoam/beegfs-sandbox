@@ -3,9 +3,14 @@
 - name: "BeeGFS mgmt server packages"
   yum: name=beegfs-mgmtd state=present
 
+- name: "libbeegfs-ib is only required for RDMA"
+  yum: name=libbeegfs-ib state=present
+
+# - name: "BeeGFS mgmt server configuration"
+#   command: "augtool -t 'Properties incl /etc/beegfs/beegfs-mgmtd.conf' set /files/etc/beegfs/beegfs-mgmtd.conf/storeMgmtdDirectory /data"
+
 - name: "BeeGFS mgmt server configuration"
-  command: "augtool -t 'Properties incl /etc/beegfs/beegfs-mgmtd.conf' set /files/etc/beegfs/beegfs-mgmtd.conf/storeMgmtdDirectory /data"
+  command: "/opt/beegfs/sbin/beegfs-setup-mgmtd -p /data/beegfs/beegfs_mgmtd"
 
 - name: "BeeGFS mgmt server service"
   service: name=beegfs-mgmtd state=started enabled=yes
-

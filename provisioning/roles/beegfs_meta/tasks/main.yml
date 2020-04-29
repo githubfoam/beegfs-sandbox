@@ -3,12 +3,17 @@
 - name: "BeeGFS metadata server packages"
   yum: name=beegfs-meta state=present
 
-- name: "BeeGFS metadata server configuration"
-  command: "augtool -t 'Properties incl /etc/beegfs/beegfs-meta.conf' set /files/etc/beegfs/beegfs-meta.conf/storeMetaDirectory /data"
+- name: "libbeegfs-ib is only required for RDMA"
+  yum: name=libbeegfs-ib state=present
 
-- name: "BeeGFS metadata server  mgmt ip configuration"
-  command: "augtool -t 'Properties incl /etc/beegfs/beegfs-meta.conf' set /files/etc/beegfs/beegfs-meta.conf/sysMgmtdHost 192.168.44.10"
+- name: "BeeGFS mgmt server configuration"
+  command: "/opt/beegfs/sbin/beegfs-setup-meta -p /data/beegfs/beegfs_meta -s 2 -m vg-mgmt01"
+
+# - name: "BeeGFS metadata server configuration"
+#   command: "augtool -t 'Properties incl /etc/beegfs/beegfs-meta.conf' set /files/etc/beegfs/beegfs-meta.conf/storeMetaDirectory /data"
+#
+# - name: "BeeGFS metadata server  mgmt ip configuration"
+#   command: "augtool -t 'Properties incl /etc/beegfs/beegfs-meta.conf' set /files/etc/beegfs/beegfs-meta.conf/sysMgmtdHost 192.168.44.10"
 
 - name: "BeeGFS metadata server service"
   service: name=beegfs-meta state=started enabled=yes
-

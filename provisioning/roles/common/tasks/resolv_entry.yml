@@ -1,0 +1,9 @@
+---
+- name: Add mappings to /etc/resolv.conf
+  blockinfile:
+    path: /etc/resolv.conf
+    block: |
+       {{ item.name }} {{ item.ip }}
+    marker: "# {mark} ANSIBLE MANAGED BLOCK {{ item.name }}"
+  with_items:
+    - { name: nameserver, ip: 8.8.8.8 }

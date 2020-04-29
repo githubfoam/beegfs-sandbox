@@ -3,19 +3,42 @@
 - name: "BeeGFS mountpoint"
   file: path=/mnt/beegfs state=directory
 
+# - name: "BeeGFS client packages"
+#   yum: name="{{ item }}" state=present
+#   with_items:
+#   - "kernel-devel-{{ ansible_kernel }}"
+#   - gcc
+#   - beegfs-client
+#   - beegfs-helperd
+
+# - name: "Get kernel version"
+#   shell: "uname -r"
+#   register: shell_output
+#
+# - name: "Ensure kernel-devel is installed"
+#   yum:
+#     name: "kernel-devel-{{ shell_output.stdout_lines[0] }}"
+
+- name: "Upgrade all packages"
+  yum: name=* state=latest update_cache=yes
+
 - name: "BeeGFS client packages"
-  yum: name="{{ item }}" state=present
-  with_items:
-  - "kernel-devel-{{ ansible_kernel }}"
-  - gcc
-  - beegfs-client
-  - beegfs-helperd
+  yum:
+    # name: ['kernel-devel-{{ ansible_kernel }}','gcc', 'beegfs-helperd', 'beegfs-client']
+    name: ['beegfs-utils', 'beegfs-helperd', 'beegfs-client', 'kernel-devel']
+    state: present
 
-- name: "BeeGFS client mgmt ip configuration"
-  command: "augtool -t 'Properties incl /etc/beegfs/beegfs-client.conf' set /files/etc/beegfs/beegfs-client.conf/sysMgmtdHost 192.168.44.10"
-
-- name: "BeeGFS helperd service"
-  service: name=beegfs-helperd state=started enabled=yes
-
-- name: "BeeGFS client service"
-  service: name=beegfs-client state=started enabled=yes
+# - name: "The client needs to know where the management service is running"
+#   command: "/opt/beegfs/sbin/beegfs-setup-client -m vg-mgmt01"
+#
+# # - name: "BeeGFS client mgmt ip configuration"
+# #   command: "augtool -t 'Properties incl /etc/beegfs/beegfs-client.conf' set /files/etc/beegfs/beegfs-client.conf/sysMgmtdHost 192.168.44.10"
+#
+# - name: "BeeGFS helperd service"
+#   service: name=beegfs-helperd state=started enabled=yes
+#
+# - name: "BeeGFS client service"
+#   service: name=beegfs-client state=started enabled=yes
+#
+# - name: "Check the detected network interfaces and transport protocols from a client node"
+#   command: "beegfs-ctl --listnodes --nodetype=meta --nicdetails"

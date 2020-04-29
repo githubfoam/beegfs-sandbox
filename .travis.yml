@@ -1,0 +1,50 @@
+language: ruby
+# dist: xenial #16.04
+dist: bionic #18.04
+sudo: required
+rvm:
+  - 2.7
+env:
+  global:
+  - VAGRANT_VERSION="2.2.7"
+before_install:
+  - sudo apt-get -qq update
+jobs:
+  include:
+    - stage: "build Vagrant and Libvirt with KVM or QEMU - bionic"
+      script:
+          - sudo apt-get install libvirt-bin libvirt-dev qemu-utils qemu
+          - sudo apt-get install libvirt-bin -y
+          - sudo systemctl status libvirtd
+          - sudo libvirtd --version
+          - sudo apt-get install cpu-checker -y
+          - sudo kvm-ok
+          - egrep -c '(vmx|svm)' /proc/cpuinfo #If 0 it means that your CPU doesn't support hardware virtualization.If 1 or more it does - but you still need to make sure that virtualization is enabled in the BIOS.
+          - sudo addgroup libvirtd
+          - sudo adduser  $(id -un) libvirtd #ensure that your username is added to the group libvirtd
+          - sudo kvm-ok
+          - sudo apt-get install -y bridge-utils dnsmasq-base ebtables libvirt-bin libvirt-dev qemu-kvm qemu-utils ruby-dev
+          - sudo wget -nv https://releases.hashicorp.com/vagrant/${VAGRANT_VERSION}/vagrant_${VAGRANT_VERSION}_x86_64.deb
+          - sudo dpkg -i vagrant_${VAGRANT_VERSION}_x86_64.deb
+          - vagrant version
+          - sudo vagrant plugin install vagrant-libvirt
+          - sudo vagrant plugin install vagrant-mutate
+          - sudo vagrant status
+          - sudo virsh list --all #show all running KVM/libvirt VMs
+          - sudo vagrant box add "centos/7" --provider=libvirt
+          - vagrant box list #veridy installed boxes
+          - vagrant status #Check the status of the VMs to see that none of them have been created yet
+          - sudo vagrant up --provider=libvirt
+          - sudo vagrant status
+          - sudo vagrant global-status
+          - sudo vagrant ssh vg-client01 -c "hostnamectl status"
+          - sudo virsh list --all #show all running KVM/libvirt VMs
+after_success:
+    - stage: Finalize
+      script: sudo vagrant destroy -f
+notifications:
+  #email: false
+   email:
+     on_success: never # default: change
+     on_failure: always # default: always
+   webhooks: https://galaxy.ansible.com/api/v1/notifications/

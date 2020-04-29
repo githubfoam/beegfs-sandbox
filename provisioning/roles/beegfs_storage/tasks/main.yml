@@ -3,11 +3,22 @@
 - name: "BeeGFS storage node packages"
   yum: name=beegfs-storage state=present
 
-- name: "BeeGFS storage node configuration"
-  command: "augtool -t 'Properties incl /etc/beegfs/beegfs-storage.conf' set /files/etc/beegfs/beegfs-storage.conf/storeStorageDirectory /data"
+- name: "libbeegfs-ib is only required for RDMA"
+  yum: name=libbeegfs-ib state=present
 
-- name: "BeeGFS storage node mgmt ip configuration"
-  command: "augtool -t 'Properties incl /etc/beegfs/beegfs-storage.conf' set /files/etc/beegfs/beegfs-storage.conf/sysMgmtdHost 192.168.44.10"
+# - name: "BeeGFS storage node configuration"
+#   command: "augtool -t 'Properties incl /etc/beegfs/beegfs-storage.conf' set /files/etc/beegfs/beegfs-storage.conf/storeStorageDirectory /data"
+#
+# - name: "BeeGFS storage node mgmt ip configuration"
+#   command: "augtool -t 'Properties incl /etc/beegfs/beegfs-storage.conf' set /files/etc/beegfs/beegfs-storage.conf/sysMgmtdHost 192.168.44.10"
+
+#https://www.beegfs.io/wiki/ManualInstallWalkThrough
+# As this service is running on a server with name "node03" in our example, we will pick number "3" as ID for this storage service
+#and we will use "301" as storage target ID to show that this is the first target ("01") of storage service "3".
+# To add a second storage target on this same machine:
+# $ /opt/beegfs/sbin/beegfs-setup-storage -p /mnt/myraid2/beegfs_storage -s 3 -i 302
+- name: "The storage service needs to know where it can store its data and how to reach the management server"
+  command: "/opt/beegfs/sbin/beegfs-setup-storage -p /mnt/myraid1/beegfs_storage -s 1 -i 101 -m vg-storage01"
 
 - name: "BeeGFS storage node service"
   service: name=beegfs-storage state=started enabled=yes

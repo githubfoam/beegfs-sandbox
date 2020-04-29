@@ -5,6 +5,7 @@ require 'yaml'
 #  server configs from YAML/YML file
 
 servers_list = YAML.load_file(File.join(File.dirname(__FILE__), 'provisioning/servers_list.yml'))
+# servers_list = YAML.load_file(File.join(File.dirname(__FILE__), 'servers_list.yml'))
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
  # Disable updates
@@ -29,20 +30,29 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
               ansible.compatibility_mode = server["ansible_compatibility_mode"]
               ansible.version = server["ansible_version"]
               ansible.playbook = server["server_bootstrap"]
-              ansible.groups = {
-               "vg-mgmt" => ["vg-mgmt01"],
-               "vg-meta" => ["vg-meta01"],
-               "vg-storage" => ["vg-storage01"],
-               "vg-clients" => ["vg-client01"],
-               "all_groups:children" => ["vg-mgmt", "vg-meta", "vg-storage", "vg-clients"]
-              }
+              ansible.inventory_path = 'provisioning/inventory_localconn'
+              # ansible.inventory_path = 'inventory'
+              # ansible.verbose = "vvvv" # debug
+              # ansible.groups = {
+              #  "vgmgmt" => ["vg-mgmt01"],
+              #  "vgmeta" => ["vg-meta01"],
+              #  "vgstorage" => ["vg-storage01","vg-storage02"],
+              #  "vgclients" => ["vg-client01","vg-client02"],
+              #  "vgmons" => ["vg-admon01"],
+              #  "all_groups:children" => ["vgmgmt", "vgmeta", "vgstorage", "vgclients","vgmons"]
+              # }
               # ansible.inventory_path = 'provisioning/hosts'
               # ansible.verbose = "vvvv" # debug
            end # end if box.vm.provision
           box.vm.provision "shell", inline: <<-SHELL
-          echo "======================================================================================="
-          hostnamectl status
-          echo "======================================================================================="
+          echo "===================================================================================="
+                                    hostnamectl status
+          echo "===================================================================================="
+          echo "         \   ^__^                                                                  "
+          echo "          \  (oo)\_______                                                          "
+          echo "             (__)\       )\/\                                                      "
+          echo "                 ||----w |                                                         "
+          echo "                 ||     ||                                                         "
           SHELL
 
         end # end of config.vm
