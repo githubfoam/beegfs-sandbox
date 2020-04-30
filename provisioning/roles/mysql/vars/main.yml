@@ -1,2 +1,12 @@
 ---
 # vars file for common
+mysql_root_password: super-secure-password
+mysql_databases:
+  - name: "ICAT"
+    encoding: latin1
+    collation: latin1_general_ci
+mysql_users:
+  - name: "irods"
+    host: "%"
+    password: "irods"
+    priv: "example_db.*:ALL"
