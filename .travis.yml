@@ -37,7 +37,7 @@ jobs:
           - sudo vagrant up --provider=libvirt vg-mgmt01
           - sudo vagrant status
           - sudo vagrant global-status
-          - sudo vagrant ssh vg-client01 -c "hostnamectl status"
+          # - sudo vagrant ssh vg-client01 -c "hostnamectl status"
           - sudo virsh list --all #show all running KVM/libvirt VMs
 after_success:
     - stage: Finalize

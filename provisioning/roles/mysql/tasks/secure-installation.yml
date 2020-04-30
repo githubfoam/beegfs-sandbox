@@ -24,16 +24,16 @@
     - DELETE FROM mysql.user WHERE User='{{ mysql_root_username }}' AND Host NOT IN ('localhost', '127.0.0.1', '::1')
   changed_when: false
 
-- name: Get list of hosts for the root user.
-  command: mysql -NBe
-    "SELECT Host
-    FROM mysql.user
-    WHERE User = '{{ mysql_root_username }}'
-    ORDER BY (Host='localhost') ASC"
-  register: mysql_root_hosts
-  changed_when: false
-  check_mode: false
-  when: mysql_install_packages | bool or mysql_root_password_update
+# - name: Get list of hosts for the root user.
+#   command: mysql -NBe
+#     "SELECT Host
+#     FROM mysql.user
+#     WHERE User = '{{ mysql_root_username }}'
+#     ORDER BY (Host='localhost') ASC"
+#   register: mysql_root_hosts
+#   changed_when: false
+#   check_mode: false
+#   when: mysql_install_packages | bool or mysql_root_password_update
 
 # Note: We do not use mysql_user for this operation, as it doesn't always update
 # the root password correctly. See: https://goo.gl/MSOejW
