@@ -9,7 +9,6 @@
   - name: "Set the timezone - It is important to have the correct time on all nodes"
     shell: "timedatectl set-timezone Asia/Tokyo"
   roles:
-    # - beegfs_common
     - common
 
 - name: "Boot management hosts"
@@ -20,46 +19,46 @@
   - name: "Setting hostname"
     shell: "hostnamectl set-hostname {{ inventory_hostname }}"
   roles:
-    - beegfs_mgmt
-
-- name: "Boot meta hosts"
-  gather_facts: true
-  hosts:  vgmeta
-  become: yes
-  pre_tasks:
-  - name: "Setting hostname"
-    shell: "hostnamectl set-hostname {{ inventory_hostname }}"
-  roles:
-    - beegfs_meta
-
-- name: "Boot storage hosts"
-  gather_facts: true
-  hosts:  vgstorage
-  become: yes
-  pre_tasks:
-  - name: "Setting hostname"
-    shell: "hostnamectl set-hostname {{ inventory_hostname }}"
-  roles:
-    - beegfs_storage
-
-- name: "Boot admon hosts"
-  gather_facts: true
-  hosts:  vgmons
-  become: yes
-  pre_tasks:
-  - name: "Setting hostname"
-    shell: "hostnamectl set-hostname {{ inventory_hostname }}"
-  roles:
-    - beegfs_admon
-
-- name: "Boot clients hosts"
-  gather_facts: true
-  hosts:  vgclients
-  # hosts:  [vgclient01,vgclient02]
-  become: yes
-  pre_tasks:
-  - name: "Setting hostname"
-    shell: "hostnamectl set-hostname {{ inventory_hostname }}"
-  roles:
-    - beegfs_client
-    - benchmark
+    - mysql
+#
+# - name: "Boot meta hosts"
+#   gather_facts: true
+#   hosts:  vgmeta
+#   become: yes
+#   pre_tasks:
+#   - name: "Setting hostname"
+#     shell: "hostnamectl set-hostname {{ inventory_hostname }}"
+#   roles:
+#     - beegfs_meta
+#
+# - name: "Boot storage hosts"
+#   gather_facts: true
+#   hosts:  vgstorage
+#   become: yes
+#   pre_tasks:
+#   - name: "Setting hostname"
+#     shell: "hostnamectl set-hostname {{ inventory_hostname }}"
+#   roles:
+#     - beegfs_storage
+#
+# - name: "Boot admon hosts"
+#   gather_facts: true
+#   hosts:  vgmons
+#   become: yes
+#   pre_tasks:
+#   - name: "Setting hostname"
+#     shell: "hostnamectl set-hostname {{ inventory_hostname }}"
+#   roles:
+#     - beegfs_admon
+#
+# - name: "Boot clients hosts"
+#   gather_facts: true
+#   hosts:  vgclients
+#   # hosts:  [vgclient01,vgclient02]
+#   become: yes
+#   pre_tasks:
+#   - name: "Setting hostname"
+#     shell: "hostnamectl set-hostname {{ inventory_hostname }}"
+#   roles:
+#     - beegfs_client
+#     - benchmark
