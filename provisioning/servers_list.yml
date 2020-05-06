@@ -32,16 +32,16 @@
   ansible_version: "2.9.7"
   ansible_compatibility_mode: "2.0"
 
-- vagrant_box_host: "vg-storage02"
-  vagrant_box: "centos/7"
-  vbox_name: "vbox-storage02"
-  vbox_ram: 512
-  vbox_cpu: 2
-  network_type: "private_network"
-  vagrant_box_ip: 192.168.44.31
-  server_bootstrap: "provisioning/playbook.yml"
-  ansible_version: "2.9.7"
-  ansible_compatibility_mode: "2.0"
+# - vagrant_box_host: "vg-storage02"
+#   vagrant_box: "centos/7"
+#   vbox_name: "vbox-storage02"
+#   vbox_ram: 512
+#   vbox_cpu: 2
+#   network_type: "private_network"
+#   vagrant_box_ip: 192.168.44.31
+#   server_bootstrap: "provisioning/playbook.yml"
+#   ansible_version: "2.9.7"
+#   ansible_compatibility_mode: "2.0"
 
 - vagrant_box_host: "vg-client01"
   vagrant_box: "centos/7"
@@ -54,16 +54,16 @@
   ansible_version: "2.9.7"
   ansible_compatibility_mode: "2.0"
 
-- vagrant_box_host: "vg-client02"
-  vagrant_box: "centos/7"
-  vbox_name: "vbox-client02"
-  vbox_ram: 512
-  vbox_cpu: 2
-  network_type: "private_network"
-  vagrant_box_ip: 192.168.44.41
-  server_bootstrap: "provisioning/playbook.yml"
-  ansible_version: "2.9.7"
-  ansible_compatibility_mode: "2.0"
+# - vagrant_box_host: "vg-client02"
+#   vagrant_box: "centos/7"
+#   vbox_name: "vbox-client02"
+#   vbox_ram: 512
+#   vbox_cpu: 2
+#   network_type: "private_network"
+#   vagrant_box_ip: 192.168.44.41
+#   server_bootstrap: "provisioning/playbook.yml"
+#   ansible_version: "2.9.7"
+#   ansible_compatibility_mode: "2.0"
 
 - vagrant_box_host: "vg-admon01"
   vagrant_box: "centos/7"
