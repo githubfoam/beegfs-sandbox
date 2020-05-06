@@ -7,7 +7,7 @@ Travis (.com) branch:
 >vagrant up vg-mgmt01
 
 ```
-
+smoke tests
 ```
 [vagrant@client01 ~]$ beegfs-ctl --listnodes --nodetype=meta --nicdetails
 meta01 [ID: 1]
