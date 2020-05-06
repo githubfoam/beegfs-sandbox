@@ -9,7 +9,6 @@
   - name: "Set the timezone - It is important to have the correct time on all nodes"
     shell: "timedatectl set-timezone Asia/Tokyo"
   roles:
-    # - beegfs_common
     - common
 
 - name: "Boot management hosts"
@@ -55,7 +54,6 @@
 - name: "Boot clients hosts"
   gather_facts: true
   hosts:  vgclients
-  # hosts:  [vgclient01,vgclient02]
   become: yes
   pre_tasks:
   - name: "Setting hostname"

@@ -6,7 +6,7 @@ rvm:
   - 2.7
 env:
   global:
-  - VAGRANT_VERSION="2.2.7"
+  - VAGRANT_VERSION="2.2.8"
 before_install:
   - sudo apt-get -qq update
 jobs:
@@ -26,8 +26,8 @@ jobs:
           - sudo dpkg -i vagrant_${VAGRANT_VERSION}_x86_64.deb
           - vagrant version
           - echo "============================================="
-          - sudo vagrant plugin install vagrant-libvirt
-          - sudo vagrant plugin install vagrant-mutate
+          - sudo vagrant plugin install vagrant-libvirt #The vagrant-libvirt plugin is required when using KVM on Linux
+          - sudo vagrant plugin install vagrant-mutate #Convert vagrant boxes to work with different providers
           - sudo vagrant status
           - sudo virsh list --all #show all running KVM/libvirt VMs
           - sudo vagrant box add "centos/7" --provider=libvirt
@@ -36,7 +36,7 @@ jobs:
           - sudo vagrant up --provider=libvirt
           - sudo vagrant status
           - sudo vagrant global-status
-          - sudo vagrant ssh vg-client01 -c "hostnamectl status"
+          - sudo vagrant ssh vg-client01 -c "beegfs-ctl --listnodes --nodetype=meta --nicdetails"
           - sudo virsh list --all #show all running KVM/libvirt VMs
 after_success:
     - stage: Finalize
