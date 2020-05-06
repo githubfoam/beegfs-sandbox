@@ -13,20 +13,19 @@ jobs:
   include:
     - stage: "build Vagrant and Libvirt with KVM or QEMU - bionic"
       script:
-          - sudo apt-get install libvirt-bin libvirt-dev qemu-utils qemu
-          - sudo apt-get install libvirt-bin -y
+          - sudo apt-get install -y cpu-checker bridge-utils dnsmasq-base ebtables libvirt-bin libvirt-dev qemu-kvm qemu-utils ruby-dev
           - sudo systemctl status libvirtd
           - sudo libvirtd --version
-          - sudo apt-get install cpu-checker -y
-          - sudo kvm-ok
           - egrep -c '(vmx|svm)' /proc/cpuinfo #If 0 it means that your CPU doesn't support hardware virtualization.If 1 or more it does - but you still need to make sure that virtualization is enabled in the BIOS.
           - sudo addgroup libvirtd
           - sudo adduser  $(id -un) libvirtd #ensure that your username is added to the group libvirtd
           - sudo kvm-ok
-          - sudo apt-get install -y bridge-utils dnsmasq-base ebtables libvirt-bin libvirt-dev qemu-kvm qemu-utils ruby-dev
+          - echo "============================================="
+          - echo "=============Installing Vagrant=============="
           - sudo wget -nv https://releases.hashicorp.com/vagrant/${VAGRANT_VERSION}/vagrant_${VAGRANT_VERSION}_x86_64.deb
           - sudo dpkg -i vagrant_${VAGRANT_VERSION}_x86_64.deb
           - vagrant version
+          - echo "============================================="
           - sudo vagrant plugin install vagrant-libvirt
           - sudo vagrant plugin install vagrant-mutate
           - sudo vagrant status
