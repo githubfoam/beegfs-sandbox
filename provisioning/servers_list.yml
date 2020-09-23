@@ -7,7 +7,7 @@
   network_type: "private_network"
   vagrant_box_ip: 192.168.44.10
   server_bootstrap: "provisioning/playbook.yml"
-  ansible_version: "2.9.7"
+  # ansible_version: "2.9.7"
   ansible_compatibility_mode: "2.0"
 
 - vagrant_box_host: "vg-meta01"
@@ -18,7 +18,7 @@
   network_type: "private_network"
   vagrant_box_ip: 192.168.44.20
   server_bootstrap: "provisioning/playbook.yml"
-  ansible_version: "2.9.7"
+  # ansible_version: "2.9.7"
   ansible_compatibility_mode: "2.0"
 
 - vagrant_box_host: "vg-storage01"
@@ -29,7 +29,7 @@
   network_type: "private_network"
   vagrant_box_ip: 192.168.44.30
   server_bootstrap: "provisioning/playbook.yml"
-  ansible_version: "2.9.7"
+  # ansible_version: "2.9.7"
   ansible_compatibility_mode: "2.0"
 
 - vagrant_box_host: "vg-storage02"
@@ -40,7 +40,7 @@
   network_type: "private_network"
   vagrant_box_ip: 192.168.44.31
   server_bootstrap: "provisioning/playbook.yml"
-  ansible_version: "2.9.7"
+  # ansible_version: "2.9.7"
   ansible_compatibility_mode: "2.0"
 
 - vagrant_box_host: "vg-client01"
@@ -51,7 +51,7 @@
   network_type: "private_network"
   vagrant_box_ip: 192.168.44.40
   server_bootstrap: "provisioning/playbook.yml"
-  ansible_version: "2.9.7"
+  # ansible_version: "2.9.7"
   ansible_compatibility_mode: "2.0"
 
 - vagrant_box_host: "vg-client02"
@@ -62,7 +62,7 @@
   network_type: "private_network"
   vagrant_box_ip: 192.168.44.41
   server_bootstrap: "provisioning/playbook.yml"
-  ansible_version: "2.9.7"
+  # ansible_version: "2.9.7"
   ansible_compatibility_mode: "2.0"
 
 - vagrant_box_host: "vg-admon01"
@@ -73,5 +73,5 @@
   network_type: "private_network"
   vagrant_box_ip: 192.168.44.50
   server_bootstrap: "provisioning/playbook.yml"
-  ansible_version: "2.9.7"
+  # ansible_version: "2.9.7"
   ansible_compatibility_mode: "2.0"

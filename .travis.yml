@@ -36,19 +36,6 @@ jobs:
           - sudo vagrant up --provider=libvirt
           - sudo vagrant status
           - sudo vagrant global-status
-          # # smoke tests
-          # - sudo vagrant ssh vg-client01 -c "beegfs-ctl --listnodes --nodetype=meta --nicdetails"
-          # - sudo vagrant ssh vg-client01 -c "beegfs-ctl --listnodes --nodetype=storage --nicdetails"
-          # - sudo vagrant ssh vg-client01 -c "beegfs-ctl --listnodes --nodetype=client --nicdetails"
-          # - sudo vagrant ssh vg-client01 -c "beegfs-net"
-          # - sudo vagrant ssh vg-client01 -c "beegfs-check-servers"
-          # - sudo vagrant ssh vg-client01 -c "beegfs-df"
-          # # benchmarks
-          # - sudo vagrant ssh vg-client01 -c "sudo beegfs-ctl --storagebench --alltargets --write --blocksize=512K --size=200G --threads=10"
-          # - sudo vagrant ssh vg-client01 -c "sudo beegfs-ctl --storagebench --alltargets --status"
-          # - sudo vagrant ssh vg-client01 -c "watch -n 1 beegfs-ctl --storagebench --alltargets --status"
-          # - sudo vagrant ssh vg-client01 -c "beegfs-ctl --storagebench --alltargets --cleanup"
-          - sudo virsh list --all #show all running KVM/libvirt VMs
 after_success:
     - stage: Finalize
       script: sudo vagrant destroy -f
